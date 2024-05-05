@@ -1,23 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DetailsButton from "./../components/DetailsButton";
-import AddToShelf from "./../components/AddToShelf";
+import AddToShelfButton from "./../components/AddToShelf";
 
 function Result({ data }) {
+  const addToShelf = (book) => {
+    const shelfData = JSON.parse(localStorage.getItem("shelfData")) || [];
+    shelfData.push(book);
+    localStorage.setItem("shelfData", JSON.stringify(shelfData));
+    alert("Book added to shelf!");
+  };
+
   return (
     <div className="result-section" id="result-section">
       {data && data.docs && data.docs.length > 0 && (
         <div className="cards">
           {data.docs.map((book, index) => {
-            // Extract the key from the book object
             const extractedKey = book.key.split("/")[2];
             return (
               <div className="card" key={index}>
                 <div className="card-title">
                   <strong>Title:</strong> {book.title}
-                </div>
-                <div className="card-title">
-                  <strong>Title:</strong> {book.key}
                 </div>
                 <div className="card-author">
                   <strong>Author:</strong>{" "}
@@ -38,11 +41,20 @@ function Result({ data }) {
                   />
                 )}
                 <div className="buttons">
-                  {/* Use the extracted key in the link */}
-                  <Link to={`/book/${extractedKey}`}>
+                  <Link
+                    to={`/book/${extractedKey}/${
+                      book.author_name
+                        ? encodeURIComponent(book.author_name[0])
+                        : "Unknown"
+                    }`}
+                  >
                     <DetailsButton />
                   </Link>
-                  <AddToShelf />
+                  {/* Pass the book object to the AddToShelfButton component */}
+                  <AddToShelfButton
+                    book={book}
+                    onClick={() => addToShelf(book)}
+                  />
                 </div>
               </div>
             );

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { fetchData } from "./../api";
 import SearchBar from "./../components/SearchBar";
 export default function Home({ handleSearch }) {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="home">
       <div className="home-section">

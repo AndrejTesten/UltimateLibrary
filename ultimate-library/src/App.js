@@ -11,6 +11,7 @@ import Result from "./pages/Result";
 import BookDetails from "./pages/BookDetails"; // New page for displaying book details
 import "./pages/Home.css";
 import "./pages/Result.css";
+import Shelf from "./pages/Shelf.js";
 function App() {
   const [data, setData] = useState(null);
 
@@ -20,7 +21,10 @@ function App() {
       console.log(data);
     });
   };
-
+  const addToShelf = (book) => {
+    // Implement the logic to add a book to the shelf
+    console.log("Adding book to shelf:", book);
+  };
   return (
     <Router>
       <div className="App">
@@ -34,8 +38,12 @@ function App() {
               </>
             }
           />
-          <Route path="/result" element={<Result data={data} />} />
-          <Route path="/book/:key" element={<BookDetails />} />
+          <Route
+            path="/result"
+            element={<Result data={data} addToShelf={addToShelf} />}
+          />
+          <Route path="/book/:key/:author" element={<BookDetails />} />
+          <Route path="/shelf" element={<Shelf />} />
         </Routes>
       </div>
     </Router>
