@@ -1,0 +1,78 @@
+.home-section {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("./../images/bg-home.jpg");
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: italiana;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.home-section h1 {
+  font-size: 60px;
+}
+.home-section p {
+  font-size: 30px;
+}
+.title-animation-one,
+.title-animation-two {
+  opacity: 0;
+  animation: showup 2s forwards;
+}
+.title-animation-two {
+  animation-delay: 0.5s;
+}
+.text-animation-one,
+.text-animation-two,
+.search-section {
+  opacity: 0;
+  animation: showup 2s forwards;
+}
+.text-animation-one {
+  animation-delay: 1s;
+}
+.text-animation-two {
+  animation-delay: 1.5s;
+}
+@keyframes showup {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+/*Search part*/
+.search-section {
+  width: 100%;
+  margin-top: 5%;
+  font-family: roboto;
+  animation-delay: 2s;
+}
+.search-section input {
+  width: 50%;
+  height: 50px;
+  font-size: 15px;
+  border-radius: 25px;
+  padding-left: 20px;
+  color: black;
+}
+.search-section button {
+  height: 50px;
+  width: 80px;
+  color: white;
+  background-color: transparent;
+  border-radius: 25px 25px 25px 25px;
+  font-size: 15px;
+  margin-left: 20px;
+}
+.search-section button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}

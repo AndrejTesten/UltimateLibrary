@@ -1,0 +1,143 @@
+.result-section {
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8)),
+    url("./../images/bg-results.jpg");
+  background-size: cover;
+  height: auto;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  word-wrap: break-word;
+}
+.card {
+  width: calc(
+    33.33% - 80px
+  ); /* Adjust the width to occupy half of the container */
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+  height: auto;
+}
+.card:hover {
+  animation: zoom 0.3s forwards;
+}
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.03);
+  }
+}
+.card img {
+  height: 80%;
+  width: 80%;
+  border-radius: 25px;
+}
+.card-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+.card-author {
+  font-size: 18px;
+  font-weight: 600;
+}
+.card-year {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+.buttons {
+  margin-top: 10px;
+}
+.details-button,
+.add-button {
+  background-color: rgb(85, 183, 240);
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+.details-button:hover,
+.add-button:hover {
+  cursor: pointer;
+}
+.add-button {
+  background-color: rgb(0, 255, 21);
+  margin-left: 20px;
+}
+.add-button:hover {
+  background-color: rgb(0, 95, 8);
+}
+.details-button:hover {
+  background-color: rgb(11, 80, 121);
+}
+/**
+ * Basic CSS Media Query Template
+ * TODO: I should probably use Sass...
+ * Author: Michael Vieth
+ * ------------------------------------------
+ *  Responsive Grid Media Queries - 1280, 1024, 768, 480
+ *   1280-1024   - desktop (default grid)
+ *   1024-768    - tablet landscape
+ *   768-480     - tablet 
+ *   480-less    - phone landscape & smaller
+ * --------------------------------------------
+ */
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .card {
+    width: calc(
+      50% - 50px
+    ); /* Adjust the width to occupy half of the container */
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .card {
+    width: calc(
+      50% - 40px
+    ); /* Adjust the width to occupy half of the container */
+  }
+}
+
+@media all and (max-width: 480px) {
+  .card {
+    width: calc(
+      100% - 80px
+    ); /* Adjust the width to occupy half of the container */
+  }
+}
+
+/* Portrait */
+@media screen and (orientation: portrait) {
+  /* Portrait styles here */
+}
+/* Landscape */
+@media screen and (orientation: landscape) {
+  /* Landscape styles here */
+}
+
+/* CSS for iPhone, iPad, and Retina Displays */
+
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+}
