@@ -1,7 +1,7 @@
-// BookDetails.js
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./Details.css";
+import GoHome from "./../components/GoHome";
 
 export default function BookDetails() {
   const { key, author } = useParams();
@@ -9,16 +9,14 @@ export default function BookDetails() {
   const [bookDetails, setBookDetails] = useState(null);
 
   useEffect(() => {
-    console.log("Key:", key);
     fetchBookDetails();
-  }, [key]); // Fetch book details whenever the book ID changes
+  }, [key]);
 
   const fetchBookDetails = () => {
     fetch(`https://openlibrary.org/works/${key}.json`)
       .then((response) => response.json())
       .then((data) => {
         setBookDetails(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching book details:", error);
@@ -26,18 +24,19 @@ export default function BookDetails() {
   };
 
   if (!bookDetails) {
-    return <div>Loading...</div>; // Render loading indicator while fetching data
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="details-page">
-      {/* Display book details */}
       <h2>Book Details</h2>
       {bookDetails.covers && bookDetails.covers.length > 0 ? (
-        <img
-          src={`http://covers.openlibrary.org/b/id/${bookDetails.covers[0]}-L.jpg`}
-          alt="Book Cover"
-        />
+        <div className="img-container">
+          <img
+            src={`http://covers.openlibrary.org/b/id/${bookDetails.covers[0]}-L.jpg`}
+            alt="Book Cover"
+          />
+        </div>
       ) : (
         <p>No Book Cover</p>
       )}
@@ -45,11 +44,11 @@ export default function BookDetails() {
       <p id="publish-title">Title: {bookDetails.title}</p>
       <p id="publish-author">Author: {author || "Unknown"}</p>
       <p id="description">
-        Description:{" "}
         {bookDetails.description && bookDetails.description.value
           ? bookDetails.description.value
-          : bookDetails.description}
+          : "No description available"}
       </p>
+      <GoHome />
     </div>
   );
 }

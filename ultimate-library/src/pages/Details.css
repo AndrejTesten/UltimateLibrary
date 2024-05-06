@@ -11,15 +11,15 @@
 }
 
 .details-page h2 {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 800;
 }
 #publish-year {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #publish-title {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 800;
 }
 #publish-author {
@@ -28,5 +28,8 @@
 #description {
   width: 80%;
   margin: 20px 0;
-  font-size: 20px;
+  font-size: 15px;
+}
+.img-container img {
+  height: 350px;
 }

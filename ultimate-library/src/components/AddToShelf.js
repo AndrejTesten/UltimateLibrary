@@ -1,5 +1,7 @@
 // AddToShelfButton.js
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 function AddToShelfButton({ book }) {
   const handleClick = () => {
@@ -19,6 +21,7 @@ function AddToShelfButton({ book }) {
 
   return (
     <button className="add-button" onClick={handleClick}>
+      <FontAwesomeIcon icon={faFloppyDisk} />
       Add to Shelf
     </button>
   );

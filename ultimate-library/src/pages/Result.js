@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DetailsButton from "./../components/DetailsButton";
 import AddToShelfButton from "./../components/AddToShelf";
-
 function Result({ data }) {
   const addToShelf = (book) => {
     const shelfData = JSON.parse(localStorage.getItem("shelfData")) || [];
@@ -19,9 +18,7 @@ function Result({ data }) {
             const extractedKey = book.key.split("/")[2];
             return (
               <div className="card" key={index}>
-                <div className="card-title">
-                  <strong>Title:</strong> {book.title}
-                </div>
+                <div className="card-title">{book.title}</div>
                 <div className="card-author">
                   <strong>Author:</strong>{" "}
                   {book.author_name && book.author_name.length > 0

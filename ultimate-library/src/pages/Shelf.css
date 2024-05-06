@@ -1,22 +1,22 @@
-.result-section {
+.shelf-section {
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.8)),
     url("./../images/bg-results.jpg");
   background-size: cover;
   height: auto;
+  min-height: 100vh;
 }
-.cards {
+.cards-shelf {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   word-wrap: break-word;
 }
-.card {
+.card-shelf {
   width: calc(
-    33.33% - 80px
+    20% - 40px
   ); /* Adjust the width to occupy half of the container */
   margin: 20px;
   padding: 20px;
-  text-align: center;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
@@ -38,48 +38,163 @@
   }
 }
 .card img {
-  height: 80%;
-  width: 80%;
+  height: 70%;
+  width: 70%;
   border-radius: 25px;
 }
-.card-title {
+.title-card {
   font-size: 20px;
   font-weight: 800;
 }
-.card-author {
-  font-size: 18px;
+.author-card {
+  font-size: 16px;
   font-weight: 600;
 }
-.card-year {
+.subject-card {
   font-size: 15px;
   font-weight: 400;
   margin-bottom: 2px;
 }
 .buttons {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.details-button,
-.add-button {
-  background-color: rgb(85, 183, 240);
+.note-btn,
+.impression-btn,
+.remove-btn {
   padding: 10px;
   border-radius: 25px;
   border: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
 }
-.details-button:hover,
-.add-button:hover {
+.note-btn {
+  background-color: rgb(2, 112, 155);
+}
+.impression-btn {
+  background-color: rgb(155, 89, 2);
+}
+.remove-btn {
+  background-color: rgb(155, 2, 2);
+}
+.note-btn:hover,
+.impression-btn:hover,
+.remove-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.note-btn:hover {
+  background-color: rgb(1, 75, 104);
+}
+.impression-btn:hover {
+  background-color: rgb(116, 65, 0);
+}
+.remove-btn:hover {
+  background-color: rgb(99, 0, 0);
+}
+h2 {
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+}
+.empty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+.empty {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+.go-home {
+  text-align: center;
+  font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 25px;
+}
+.go-home:hover {
+  cursor: pointer;
+  background-color: rgba(204, 204, 204, 0.6);
+  color: black;
+}
+.btn-alt {
+  text-align: center;
+  padding-bottom: 20px;
+}
+/*modal note*/
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #fff; /* White background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #aaa; /* Light gray color */
+}
+
+.close:hover {
+  color: #555; /* Darker gray color on hover */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+  width: 100%;
+}
+
+.modal-btn button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
-.add-button {
-  background-color: rgb(0, 255, 21);
+
+modal-btn button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
 }
-.add-button:hover {
-  background-color: rgb(0, 95, 8);
-}
-.details-button:hover {
-  background-color: rgb(11, 80, 121);
-}
+
 /**
  * Basic CSS Media Query Template
  * TODO: I should probably use Sass...
