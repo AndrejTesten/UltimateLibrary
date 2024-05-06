@@ -22,41 +22,6 @@ const Shelf = () => {
     localStorage.setItem("shelfData", JSON.stringify(updatedBooks));
   };
 
-  const handleSeeNotes = (book) => {
-    setCurrentBookNotes(book.notes || []);
-    setCurrentBook(book); // Set the current book
-
-    setShowModal(true);
-  };
-
-  const handleAddNote = (note) => {
-    // Find the index of the book in the books array
-    const bookIndex = books.findIndex((book) => book.id === note.book.id);
-    // If the book is not found, return
-    if (bookIndex === -1) {
-      console.error("Book not found.");
-      return;
-    }
-
-    // Make a copy of the books array
-    const updatedBooks = [...books];
-
-    // Get the book object from the updatedBooks array
-    const updatedBook = updatedBooks[bookIndex];
-
-    // Update the notes of the book object
-    updatedBook.notes = [...(updatedBook.notes || []), note];
-
-    // Update the state with the modified books array
-    setBooks(updatedBooks);
-
-    // Update local storage
-    localStorage.setItem("shelfData", JSON.stringify(updatedBooks));
-
-    // Update current book notes state
-    setCurrentBookNotes(updatedBook.notes || []);
-  };
-
   return (
     <div className="shelf-section">
       <h2>Book Shelf</h2>
@@ -92,7 +57,7 @@ const Shelf = () => {
                 />
               )}
               <div className="buttons">
-                <AddNoteButton onClick={() => handleSeeNotes(book)} />
+                <AddNoteButton />
                 <AddImpressionButton />
                 <RemoveBookButton book={book} onRemove={handleRemoveBook} />
               </div>
@@ -106,9 +71,8 @@ const Shelf = () => {
       {showModal && (
         <NoteModal
           notes={currentBookNotes}
-          currentBook={currentBook} 
+          currentBook={currentBook}
           onClose={() => setShowModal(false)}
-          onAddNote={handleAddNote}
         />
       )}
     </div>
