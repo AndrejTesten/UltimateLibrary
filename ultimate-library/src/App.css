@@ -82,3 +82,62 @@ h6 {
 .icon {
   margin-right: 8px;
 }
+.switch4-container h5 {
+  margin-bottom: 0.7rem;
+}
+.switch4 {
+  position: relative;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+.switch4 label {
+  padding: 1rem;
+  z-index: 1;
+}
+#active-label {
+  position: absolute;
+  left: 0;
+  width: 34%;
+  height: 100%;
+  background: #14142a;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  opacity: 0.5;
+  transition: 0.5s left ease;
+}
+#switch4-radio1:checked ~ #active-label {
+  left: 0;
+}
+#switch4-radio2:checked ~ #active-label {
+  left: 33%;
+}
+#switch4-radio3:checked ~ #active-label {
+  left: 66%;
+}
+.container {
+  max-width: 80%;
+  margin: auto;
+  height: 100dvh;
+  display: grid;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: center;
+  padding: 4rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+  cursor: pointer;
+}
+label {
+  cursor: pointer;
+}
+.trash {
+  color: white;
+}
+.remove-btn {
+  background-color: #131313;
+}

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
+
 
 function App() {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,7 +13,10 @@ function App() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <button className="main-button note-btn">Notes</button>
+        <button className="main-button note-btn">
+          <FontAwesomeIcon icon={faBookBookmark} />
+          Notes
+        </button>
       </div>
       <div className={`additional-buttons ${isHovered ? "show" : ""}`}>
         <button className="additional-button note-btn-add">Add Notes</button>

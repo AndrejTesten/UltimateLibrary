@@ -25,6 +25,7 @@
   align-items: center;
   border-radius: 25px;
   height: auto;
+  color: white;
 }
 .card:hover {
   animation: zoom 0.3s forwards;
