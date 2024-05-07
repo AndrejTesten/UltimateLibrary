@@ -60,9 +60,8 @@ function Shelf() {
         <div className="empty-section">
           <h3 className="empty">
             Your shelf is empty. You should search for books and add them to
-            your shelf.
+            your shelf, or filter them by different value.
           </h3>
-          <GoHome />
         </div>
       ) : (
         <div className="cards">
@@ -89,7 +88,7 @@ function Shelf() {
               )}
               <div className="buttons">
                 <AddNoteButton />
-                <AddImpressionButton />
+                <AddImpressionButton bookId={book.id} />
               </div>
               <ReadSwitch bookId={book.id} />
               <RemoveBookButton book={book} onRemove={handleRemoveBook} />

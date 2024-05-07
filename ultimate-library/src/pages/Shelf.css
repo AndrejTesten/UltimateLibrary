@@ -225,7 +225,69 @@ label {
   justify-content: center;
   gap: 15px;
 }
+/* ImpressionModal.css */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
 
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.impression-field {
+  width: 100%;
+  max-width: 300px; /* Non-scalable width */
+  height: 100px;
+  resize: none; /* Prevent textarea from being resizable */
+}
+
+.buttons {
+  text-align: right;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+h4 {
+  text-align: center;
+  color: #000;
+}
 /**
  * Basic CSS Media Query Template
  * TODO: I should probably use Sass...
