@@ -60,7 +60,6 @@ h6 {
 #__next {
   isolation: isolate;
 }
-/* ShelfButton.css */
 .shelf-button {
   position: fixed;
   font-size: 15px;
@@ -79,61 +78,118 @@ h6 {
   cursor: pointer;
   background-color: #c0c0c0; /* Optional: adjust hover background color */
 }
-.icon {
-  margin-right: 8px;
+@media all and (max-width: 480px) {
 }
-.switch4-container h5 {
-  margin-bottom: 0.7rem;
-}
-.switch4 {
-  margin-top: 3%;
-  position: relative;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-  background-color: #fff;
-  border-radius: 25px;
-  color: black;
-  font-weight: 600;
-}
-.switch4 label {
-  padding: 1rem;
-  z-index: 1;
-}
-#active-label {
-  position: absolute;
-  width: 33.4%;
-  text-align: center;
-  height: 100%;
-  background: #131313;
-  border-radius: 25px;
-  opacity: 1;
-  transition: 0.5s left ease;
+/**
+ * Basic CSS Media Query Template
+ * TODO: I should probably use Sass...
+ * Author: Michael Vieth
+ * ------------------------------------------
+ *  Responsive Grid Media Queries - 1280, 1024, 768, 480
+ *   1280-1024   - desktop (default grid)
+ *   1024-768    - tablet landscape
+ *   768-480     - tablet 
+ *   480-less    - phone landscape & smaller
+ * --------------------------------------------
+ */
+@media all and (min-width: 1024px) and (max-width: 1280px) {
 }
 
-.container {
-  max-width: 40%;
-  margin: auto;
-  height: 100dvh;
-  display: grid;
-  flex-wrap: wrap;
-  gap: 4rem;
-  justify-content: center;
-  padding: 4rem;
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .card {
+    width: calc(
+      50% - 50px
+    ); /* Adjust the width to occupy half of the container */
+  }
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-  display: none;
-  cursor: pointer;
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .card {
+    width: calc(
+      50% - 40px
+    ); /* Adjust the width to occupy half of the container */
+  }
 }
-label {
-  cursor: pointer;
+
+@media all and (max-width: 480px) {
+  .home-section h1 {
+    font-size: 34px;
+  }
+  .home-section p {
+    font-size: 22px;
+  }
+  .search-section button {
+    height: 50px;
+    width: 70px;
+    font-size: 13px;
+    margin-left: 10px;
+  }
+  .search-section input {
+    font-size: 13px;
+    padding-left: 10px;
+  }
+  .shelf-button {
+    font-size: 13px;
+  }
+  /*Results section*/
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /*Details section*/
+  .details-page h2 {
+    font-size: 30px;
+  }
+  #publish-title {
+    font-size: 20px;
+  }
+  #description {
+    font-size: 14px;
+  }
+  .img-container img {
+    height: 300px;
+  }
+  /*Shelf section*/
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 80px);
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .go-home {
+    font-size: 20px;
+  }
+  .switch4 {
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .title-part select {
+    font-size: 15px;
+  }
 }
-.trash {
-  color: white;
+
+/* Portrait */
+@media screen and (orientation: portrait) {
+  /* Portrait styles here */
 }
-.remove-btn {
-  background-color: #131313;
+/* Landscape */
+@media screen and (orientation: landscape) {
+  /* Landscape styles here */
+}
+
+/* CSS for iPhone, iPad, and Retina Displays */
+
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
 }

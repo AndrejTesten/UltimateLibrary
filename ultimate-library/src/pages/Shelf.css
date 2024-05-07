@@ -7,6 +7,7 @@
 }
 
 .card img {
+  padding-top: 10px;
   height: 70%;
   width: 70%;
   border-radius: 25px;
@@ -84,7 +85,7 @@ h2 {
 }
 .go-home {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
@@ -137,17 +138,6 @@ h2 {
   display: inline-block;
 }
 
-.impression-btn,
-.note-btn {
-  display: block;
-  padding: 10px;
-  border-radius: 25px;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 3px 5px rgba(255, 255, 255, 0.3);
-}
 .additional-buttons {
   position: absolute;
   top: 100%; /* Position it below the main button */
@@ -161,15 +151,25 @@ h2 {
   opacity: 1;
   transform: translate(-50%, -2px); /* Move it upward slightly */
 }
+/* ShelfButton.css */
+
+.icon {
+  margin-right: 8px;
+}
 .switch4-container h5 {
   margin-bottom: 0.7rem;
 }
 .switch4 {
+  margin-top: 3%;
   position: relative;
   height: 50px;
   display: flex;
   justify-content: space-around;
   margin-bottom: 1rem;
+  background-color: #fff;
+  border-radius: 25px;
+  color: black;
+  font-weight: 600;
 }
 .switch4 label {
   padding: 1rem;
@@ -177,26 +177,17 @@ h2 {
 }
 #active-label {
   position: absolute;
-  left: 0;
-  width: 34%;
+  width: 30.5%;
+  text-align: center;
   height: 100%;
-  background: #14142a;
-  border: 1px solid #fff;
-  border-radius: 12px;
+  background: #131313;
+  border-radius: 25px;
   opacity: 0.5;
   transition: 0.5s left ease;
 }
-#switch4-radio1:checked ~ #active-label {
-  left: 0;
-}
-#switch4-radio2:checked ~ #active-label {
-  left: 33%;
-}
-#switch4-radio3:checked ~ #active-label {
-  left: 66%;
-}
+
 .container {
-  max-width: 80%;
+  max-width: 40%;
   margin: auto;
   height: 100dvh;
   display: grid;
@@ -220,10 +211,22 @@ label {
 .remove-btn {
   background-color: #131313;
 }
+
 .title-part {
+  padding-top: 1%;
   display: flex;
   justify-content: center;
   gap: 15px;
+}
+.title-part select {
+  background-color: rgba(204, 204, 204, 0.6);
+  border-radius: 25px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+.title-part > select > option {
+  background-color: rgba(204, 204, 204, 0.6);
 }
 /* ImpressionModal.css */
 .modal-container {
@@ -244,16 +247,16 @@ label {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-content {
   position: relative;
-  background-color: #fff;
+  background-color: rgb(195, 194, 194);
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.3s ease;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.5s ease;
 }
 
 @keyframes slideIn {
@@ -271,13 +274,30 @@ label {
   width: 100%;
   max-width: 300px; /* Non-scalable width */
   height: 100px;
+  background-color: rgb(138, 137, 137);
+  border: none;
   resize: none; /* Prevent textarea from being resizable */
+  font-size: 15px;
 }
-
-.buttons {
-  text-align: right;
+.input-group-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
-
+.buttons > button {
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  width: 200px;
+  background-color: rgb(138, 137, 137);
+}
+.buttons > button:hover {
+  background-color: #adadad;
+  cursor: pointer;
+}
 .close {
   position: absolute;
   top: 10px;
@@ -287,6 +307,22 @@ label {
 h4 {
   text-align: center;
   color: #000;
+}
+/* Note modal */
+.modal-content {
+  max-width: 70%;
+}
+.note-item {
+  border: 2px solid #3a3939;
+  background-color: #adadad;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.delete-btn-note > .trash {
+  color: black;
+  border-radius: 25px;
 }
 /**
  * Basic CSS Media Query Template
@@ -321,13 +357,6 @@ h4 {
 }
 
 @media all and (max-width: 480px) {
-  .card {
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(
-      100% - 80px
-    ); /* Adjust the width to occupy half of the container */
-  }
 }
 
 /* Portrait */

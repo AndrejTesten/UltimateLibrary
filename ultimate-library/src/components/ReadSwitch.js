@@ -31,7 +31,15 @@ function ReadSwitch({ bookId }) {
           onChange={handleRadioChange}
         />
         <label htmlFor={`wishlist-${bookId}`}>Wishlist</label>
-
+        <input
+          type="radio"
+          id={`inprogress-${bookId}`}
+          name={`radio-${bookId}`}
+          value="inprogress"
+          checked={activeRadio === "inprogress"}
+          onChange={handleRadioChange}
+        />
+        <label htmlFor={`inprogress-${bookId}`}>In Progress</label>
         <input
           type="radio"
           id={`completed-${bookId}`}
@@ -42,25 +50,15 @@ function ReadSwitch({ bookId }) {
         />
         <label htmlFor={`completed-${bookId}`}>Completed</label>
 
-        <input
-          type="radio"
-          id={`inprogress-${bookId}`}
-          name={`radio-${bookId}`}
-          value="inprogress"
-          checked={activeRadio === "inprogress"}
-          onChange={handleRadioChange}
-        />
-        <label htmlFor={`inprogress-${bookId}`}>In Progress</label>
-
         <span
           id="active-label"
           style={{
             left:
               activeRadio === "wishlist"
                 ? "0%"
-                : activeRadio === "completed"
-                ? "33%"
-                : "66%",
+                : activeRadio === "inprogress"
+                ? "32%"
+                : "68%",
           }}
         ></span>
       </div>

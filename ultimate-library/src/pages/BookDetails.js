@@ -41,8 +41,8 @@ export default function BookDetails() {
         <p>No Book Cover</p>
       )}
       <p id="publish-year">First Published: {bookDetails.first_publish_date}</p>
-      <p id="publish-title">Title: {bookDetails.title}</p>
-      <p id="publish-author">Author: {author || "Unknown"}</p>
+      <p id="publish-title">{bookDetails.title}</p>
+      <p id="publish-author">{author || "Unknown"}</p>
       <p id="description">
         {bookDetails.description && bookDetails.description.value
           ? bookDetails.description.value

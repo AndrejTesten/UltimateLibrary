@@ -1,16 +1,22 @@
+// Shelf.js
+
 import React, { useState, useEffect } from "react";
 import "./Shelf.css";
 import AddImpressionButton from "./../components/AddImpressionButton";
 import RemoveBookButton from "./../components/RemoveBookButton";
 import GoHome from "./../components/GoHome";
-import AddNoteButton from "./../components/AddNoteButton";
 import ReadSwitch from "./../components/ReadSwitch";
+import NoteModal from "./../components/NoteModal";
+import ImpressionModal from "./../components/ImpressionModal"; // Import ImpressionModal component
+import AddNoteButton from "./../components/AddNoteButton";
+import SeeNotesModal from "./../components/SeeNotesModal"; // Import SeeNotesModal component
 
 function Shelf() {
   const [books, setBooks] = useState([]);
   const [originalBooks, setOriginalBooks] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [currentBookNotes, setCurrentBookNotes] = useState([]);
+  const [showAddModal, setShowAddModal] = useState(false); // State to manage the Add Notes modal visibility
+  const [showSeeModal, setShowSeeModal] = useState(false); // State to manage the See Notes modal visibility
+  const [showImpressionModal, setShowImpressionModal] = useState(false); // State to manage the Impression modal visibility
   const [currentBook, setCurrentBook] = useState(null);
   const [filterValue, setFilterValue] = useState("");
 
@@ -32,7 +38,6 @@ function Shelf() {
     const selectedValue = event.target.value;
     setFilterValue(selectedValue);
 
-    // If a filter value is selected, filter the original books based on the selected value
     if (selectedValue !== "") {
       const filteredBooks = originalBooks.filter((book) => {
         const bookStatus = localStorage.getItem(`book${book.id}`);
@@ -40,9 +45,29 @@ function Shelf() {
       });
       setBooks(filteredBooks);
     } else {
-      // If no filter value is selected, reset to display all original books
       setBooks(originalBooks);
     }
+  };
+
+  const handleAddNote = (bookId) => {
+    setCurrentBook(bookId);
+    setShowAddModal(true);
+  };
+
+  const handleSeeNotes = (bookId) => {
+    setCurrentBook(bookId);
+    setShowSeeModal(true);
+  };
+
+  const handleAddImpression = (bookId) => {
+    setCurrentBook(bookId);
+    setShowImpressionModal(true);
+  };
+
+  const closeModal = () => {
+    setShowAddModal(false);
+    setShowSeeModal(false);
+    setShowImpressionModal(false); // Close Impression modal as well
   };
 
   return (
@@ -51,9 +76,9 @@ function Shelf() {
         <h2>Book Shelf</h2>
         <select value={filterValue} onChange={handleFilterChange}>
           <option value="">All</option>
-          <option value="wishlist">Wishlist</option>
-          <option value="completed">Reading</option>
+          <option value="wishlist">Wishlisted</option>
           <option value="inprogress">In Progress</option>
+          <option value="completed">Completed</option>
         </select>
       </div>
       {books.length === 0 ? (
@@ -71,12 +96,12 @@ function Shelf() {
                 <strong>{book.title}</strong>
               </div>
               <div className="card-author">
-                <strong>Author: {book.author_name + " "}</strong>
+                <strong>Author: {book.author_name[0] + " "}</strong>
               </div>
               <div className="card-subject">
                 {book.subject_facet && (
                   <strong>
-                    Subjects: {book.subject_facet.slice(0, 3).join(", ")}
+                    Subjects: {book.subject_facet.slice(1, 3).join(", ")}
                   </strong>
                 )}
               </div>
@@ -87,8 +112,14 @@ function Shelf() {
                 />
               )}
               <div className="buttons">
-                <AddNoteButton />
-                <AddImpressionButton bookId={book.id} />
+                <AddNoteButton
+                  onAddNote={() => handleAddNote(book.id)}
+                  onSeeNotes={() => handleSeeNotes(book.id)}
+                />
+                <AddImpressionButton
+                  bookId={book.id}
+                  onAddImpression={() => handleAddImpression(book.id)} // Pass handler to open Impression modal
+                />
               </div>
               <ReadSwitch bookId={book.id} />
               <RemoveBookButton book={book} onRemove={handleRemoveBook} />
@@ -99,6 +130,26 @@ function Shelf() {
       <div className="btn-alt">
         <GoHome />
       </div>
+      {/* Render the NoteModal, ImpressionModal, or SeeNotesModal based on which one is active */}
+      {showAddModal && (
+        <NoteModal
+          bookId={currentBook}
+          storedNote={localStorage.getItem(`book${currentBook}_note`)}
+          closeModal={closeModal}
+        />
+      )}
+      {showSeeModal && (
+        <SeeNotesModal bookId={currentBook} closeModal={closeModal} />
+      )}
+      {showImpressionModal && (
+        <ImpressionModal
+          bookId={currentBook}
+          storedImpression={localStorage.getItem(
+            `book${currentBook}_impression`
+          )}
+          closeModal={closeModal}
+        />
+      )}
     </div>
   );
 }

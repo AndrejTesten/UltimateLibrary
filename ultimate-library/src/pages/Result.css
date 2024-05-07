@@ -50,11 +50,13 @@
 .card-author {
   font-size: 18px;
   font-weight: 600;
+  color: #aeacac;
 }
 .card-year {
   font-size: 15px;
   font-weight: 400;
   margin-bottom: 2px;
+  color: #aeacac;
 }
 .buttons {
   margin-top: 10px;
@@ -80,64 +82,4 @@
 }
 .details-button:hover {
   background-color: rgb(11, 80, 121);
-}
-/**
- * Basic CSS Media Query Template
- * TODO: I should probably use Sass...
- * Author: Michael Vieth
- * ------------------------------------------
- *  Responsive Grid Media Queries - 1280, 1024, 768, 480
- *   1280-1024   - desktop (default grid)
- *   1024-768    - tablet landscape
- *   768-480     - tablet 
- *   480-less    - phone landscape & smaller
- * --------------------------------------------
- */
-@media all and (min-width: 1024px) and (max-width: 1280px) {
-}
-
-@media all and (min-width: 768px) and (max-width: 1024px) {
-  .card {
-    width: calc(
-      50% - 50px
-    ); /* Adjust the width to occupy half of the container */
-  }
-}
-
-@media all and (min-width: 480px) and (max-width: 768px) {
-  .card {
-    width: calc(
-      50% - 40px
-    ); /* Adjust the width to occupy half of the container */
-  }
-}
-
-@media all and (max-width: 480px) {
-  .card {
-    width: calc(
-      100% - 80px
-    ); /* Adjust the width to occupy half of the container */
-  }
-}
-
-/* Portrait */
-@media screen and (orientation: portrait) {
-  /* Portrait styles here */
-}
-/* Landscape */
-@media screen and (orientation: landscape) {
-  /* Landscape styles here */
-}
-
-/* CSS for iPhone, iPad, and Retina Displays */
-
-/* Non-Retina */
-@media screen and (-webkit-max-device-pixel-ratio: 1) {
-}
-
-/* Retina */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-  only screen and (-o-min-device-pixel-ratio: 3/2),
-  only screen and (min--moz-device-pixel-ratio: 1.5),
-  only screen and (min-device-pixel-ratio: 1.5) {
 }

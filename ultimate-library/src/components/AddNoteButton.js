@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
 
-
-function App() {
+function AddNoteButton({ onAddNote, onSeeNotes }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -19,10 +18,15 @@ function App() {
         </button>
       </div>
       <div className={`additional-buttons ${isHovered ? "show" : ""}`}>
-        <button className="additional-button note-btn-add">Add Notes</button>
-        <button className="additional-button note-btn-add">See Notes</button>
+        <button className="additional-button note-btn-add" onClick={onAddNote}>
+          Add Notes
+        </button>
+        {/* Add onClick event handler for See Notes button */}
+        <button className="additional-button note-btn-add" onClick={onSeeNotes}>
+          See Notes
+        </button>
       </div>
     </div>
   );
 }
-export default App;
+export default AddNoteButton;
